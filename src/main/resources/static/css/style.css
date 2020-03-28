@@ -63,7 +63,7 @@ body {
 } 
 
 .sidebar ul li:hover a, .menu ul li.active a{
-    color: #777777;
+    color: #000000;
 }
 
 .sidebar ul{
@@ -73,7 +73,7 @@ body {
 
 .sidebar ul li a{
     display: block;
-    color:#1a1a1a;
+    color:#000000;
     padding: 10px 15px;
     white-space: nowrap;
 }
@@ -87,7 +87,7 @@ body {
  */
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
 	color: #fff;
-	background-color: #1e94d2;
+	background-color: #0080ff;
 }
 
 /*
@@ -115,6 +115,6 @@ body {
 .footer-copy {
 	font-size: 92%;
 	display: block;
-	color: #777777;
+	color: #c0c0c0;
 	text-align: center;
 }
