@@ -16,10 +16,10 @@ import javax.persistence.Table;
 @Table(name = "FUNCIONARIOS")
 public class Employee extends AbstractEntity<Long> {
 	
-	@Column(nullable = false, unique = true)
+	@Column(name = "nome", nullable = false, unique = true)
 	private String name;
 	
-	@Column(nullable = false, columnDefinition = "DECIMAL(7,2) DEFAULT 0.00")
+	@Column(name = "salario", nullable = false, columnDefinition = "DECIMAL(7,2) DEFAULT 0.00")
 	private BigDecimal salary;
 	
 	@Column(name = "data_entrada", nullable = false, columnDefinition = "DATE")
