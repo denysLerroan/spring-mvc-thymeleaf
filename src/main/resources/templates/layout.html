@@ -21,7 +21,7 @@
 	<link href="/css/style.css" rel="stylesheet" />
 </head>
 <body>
-	<header>
+	<header th:replace="fragments/header :: header">
 		<div>header</div>
 	</header>
 	
@@ -37,7 +37,7 @@
 		</section>
 	</div>
 	
-	<footer>
+	<footer th:replace="fragments/footer :: footer">
 		<div>footer</div>
 	</footer>
 	
