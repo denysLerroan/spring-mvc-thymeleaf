@@ -15,4 +15,6 @@ public interface DepartmentService {
 	Department findById(Long id);
 	
 	List<Department> findAll();
+
+	boolean departmentHasRole(Long id);
 }
