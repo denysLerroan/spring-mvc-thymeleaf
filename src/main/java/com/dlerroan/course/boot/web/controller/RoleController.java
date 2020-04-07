@@ -62,5 +62,16 @@ public class RoleController {
 		attr.addFlashAttribute("success", "Registro atualizado com sucesso.");
 		return "redirect:/cargos/cadastrar";
 	}
+	
+	@GetMapping("/excluir/{id}")
+	public String delete(@PathVariable("id") Long id, RedirectAttributes attr) {
+		if(roleService.roleHasEmployee(id)) {
+			attr.addFlashAttribute("fail", "Cargo não removido. Possui cargo(s) vinculado(s).");
+		}else {
+			roleService.delete(id);
+			attr.addFlashAttribute("success", "Cargo excluído com sucesso");
+		}
+		return "redirect:/cargos/listar";
+	}
 
 }
