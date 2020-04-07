@@ -46,7 +46,7 @@ public class DepartmentController {
 	@PostMapping("/editar")
 	public String update(Department department, RedirectAttributes attr) {
 		service.update(department);
-		attr.addFlashAttribute("success", "Departamento editado com sucesso.");
+		attr.addFlashAttribute("success", "Registro atualizado com sucesso.");
 		return "redirect:/departamentos/cadastrar";
 	}
 	
