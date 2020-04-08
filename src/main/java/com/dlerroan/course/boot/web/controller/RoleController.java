@@ -2,9 +2,12 @@ package com.dlerroan.course.boot.web.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,7 +42,12 @@ public class RoleController {
 	}
 	
 	@PostMapping("/salvar")
-	public String save(Role role, RedirectAttributes attr) {
+	public String save(@Valid Role role, BindingResult result, RedirectAttributes attr) {
+		
+		if(result.hasErrors()) {
+			return "/cargo/cadastro";
+		}
+		
 		roleService.save(role);
 		attr.addFlashAttribute("success", "Cargo inserido com sucesso");
 		return "redirect:/cargos/cadastrar";
@@ -57,7 +65,12 @@ public class RoleController {
 	}
 	
 	@PostMapping("/editar")
-	public String update(Role role, RedirectAttributes attr) {
+	public String update(@Valid Role role, BindingResult result, RedirectAttributes attr) {
+		
+		if(result.hasErrors()) {
+			return "cargo/cadastro";
+		}
+		
 		roleService.update(role);
 		attr.addFlashAttribute("success", "Registro atualizado com sucesso.");
 		return "redirect:/cargos/cadastrar";

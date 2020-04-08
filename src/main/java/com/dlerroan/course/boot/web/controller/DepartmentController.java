@@ -1,8 +1,11 @@
 package com.dlerroan.course.boot.web.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,14 +40,24 @@ public class DepartmentController {
 	}
 	
 	@PostMapping("/salvar")
-	public String save(Department department, RedirectAttributes attr) {
+	public String save(@Valid Department department, BindingResult result, RedirectAttributes attr) {
+		
+		if(result.hasErrors()) {
+			return "/departamento/cadastro";
+		}
+		
 		service.save(department);
 		attr.addFlashAttribute("success", "Departamento inserido com sucesso.");
 		return "redirect:/departamentos/cadastrar";
 	}
 	
 	@PostMapping("/editar")
-	public String update(Department department, RedirectAttributes attr) {
+	public String update(@Valid Department department, BindingResult result, RedirectAttributes attr) {
+		
+		if(result.hasErrors()) {
+			return "/departamento/cadastro";
+		}
+		
 		service.update(department);
 		attr.addFlashAttribute("success", "Registro atualizado com sucesso.");
 		return "redirect:/departamentos/cadastrar";
