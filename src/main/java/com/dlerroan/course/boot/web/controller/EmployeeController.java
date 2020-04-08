@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -45,6 +46,26 @@ public class EmployeeController {
 		return "redirect:/funcionarios/cadastrar";
 	}
 	
+	@GetMapping("/editar/{id}")
+	public String preUpdate(@PathVariable("id") Long id, ModelMap model) {
+		model.addAttribute("employee", employeeService.findById(id));
+		return "funcionario/cadastro";
+	}
+	
+	@PostMapping("/editar")
+	public String update(Employee employee, RedirectAttributes attr) {
+		employeeService.update(employee);
+		attr.addFlashAttribute("success", "Registro atualizado com sucesso.");
+		return "redirect:/funcionarios/cadastrar";
+	}
+	
+	@GetMapping("/excluir/{id}")
+	public String delete(@PathVariable("id") Long id, RedirectAttributes attr) {
+			employeeService.delete(id);
+			attr.addFlashAttribute("success", "Funcionário removido com sucesso");
+			return "redirect:/funcionarios/listar";
+	}
+	
 	@ModelAttribute("cargos")
 	public List<Role> getRoles(){
 		return roleService.findAll();
@@ -54,5 +75,4 @@ public class EmployeeController {
 	public UF[] getUFs() {
 		return UF.values();
 	}
-
 }
