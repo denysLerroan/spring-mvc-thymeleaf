@@ -1,8 +1,10 @@
 package com.dlerroan.course.boot.web.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -76,6 +78,14 @@ public class EmployeeController {
 	@GetMapping("/buscar/cargo")
 	public String getByRole(@RequestParam("id") Long id, ModelMap model) {
 		model.addAttribute("funcionarios", employeeService.findByRole(id));
+		return "/funcionario/lista";
+	}
+	
+	@GetMapping("/buscar/data")
+	public String getByDate(@RequestParam("entrada") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate in, 
+			@RequestParam("saida") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate out, 
+			ModelMap model) {
+		model.addAttribute("funcionarios", employeeService.findByDate(in, out));
 		return "/funcionario/lista";
 	}
 	

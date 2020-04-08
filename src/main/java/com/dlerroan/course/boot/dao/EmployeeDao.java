@@ -1,5 +1,6 @@
 package com.dlerroan.course.boot.dao;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import com.dlerroan.course.boot.domain.Employee;
@@ -19,4 +20,10 @@ public interface EmployeeDao {
 	List<Employee> findByName(String name);
 
 	List<Employee> findByRoleId(Long id);
+
+	List<Employee> findByDateInAndOut(LocalDate in, LocalDate out);
+
+	List<Employee> findByDateIn(LocalDate in);
+
+	List<Employee> findByDateOut(LocalDate out);
 }
