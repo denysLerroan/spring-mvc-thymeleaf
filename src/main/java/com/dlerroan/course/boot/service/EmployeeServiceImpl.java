@@ -47,4 +47,9 @@ public class EmployeeServiceImpl implements EmployeeService{
 	public List<Employee> findByName(String name) {
 		return dao.findByName(name);
 	}
+
+	@Override
+	public List<Employee> findByRole(Long id) {
+		return dao.findByRoleId(id);
+	}
 }

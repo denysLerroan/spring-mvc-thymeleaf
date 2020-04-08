@@ -17,4 +17,6 @@ public interface EmployeeService {
 	List<Employee> findAll();
 
 	List<Employee> findByName(String name);
+
+	List<Employee> findByRole(Long id);
 }

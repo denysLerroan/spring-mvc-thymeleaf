@@ -12,6 +12,11 @@ public class EmployeeDaoImpl extends AbstractDao<Employee, Long> implements Empl
 	public List<Employee> findByName(String name){
 		return createQuery("select f from Employee f where f.name like concat('%', ?1, '%')", name);
 	}
+
+	@Override
+	public List<Employee> findByRoleId(Long id) {
+		return createQuery("select f from Employee f where f.role.id = ?1", id);
+	}
 	
 	
 

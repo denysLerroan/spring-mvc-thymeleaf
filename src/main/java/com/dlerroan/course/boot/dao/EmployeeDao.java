@@ -17,4 +17,6 @@ public interface EmployeeDao {
 	List<Employee> findAll();
 
 	List<Employee> findByName(String name);
+
+	List<Employee> findByRoleId(Long id);
 }

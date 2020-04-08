@@ -73,6 +73,12 @@ public class EmployeeController {
 		return "/funcionario/lista";
 	}
 	
+	@GetMapping("/buscar/cargo")
+	public String getByRole(@RequestParam("id") Long id, ModelMap model) {
+		model.addAttribute("funcionarios", employeeService.findByRole(id));
+		return "/funcionario/lista";
+	}
+	
 	@ModelAttribute("cargos")
 	public List<Role> getRoles(){
 		return roleService.findAll();
