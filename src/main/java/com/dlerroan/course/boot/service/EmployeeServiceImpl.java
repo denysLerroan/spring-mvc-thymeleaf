@@ -42,4 +42,9 @@ public class EmployeeServiceImpl implements EmployeeService{
 	public List<Employee> findAll() {
 		return dao.findAll();
 	}
+
+	@Override
+	public List<Employee> findByName(String name) {
+		return dao.findByName(name);
+	}
 }
