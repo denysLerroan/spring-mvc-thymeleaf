@@ -44,13 +44,13 @@ public class EmployeeController {
 	
 	@GetMapping("/cadastrar")
 	public String insert(Employee employee) {
-		return "/funcionario/cadastro";
+		return "funcionario/cadastro";
 	}
 	
 	@GetMapping("/listar")
 	public String findAll(ModelMap model) {
 		model.addAttribute("funcionarios", employeeService.findAll());
-		return "/funcionario/lista";
+		return "funcionario/lista";
 	}
 	
 	@PostMapping("/salvar")
@@ -93,13 +93,13 @@ public class EmployeeController {
 	@GetMapping("/buscar/nome")
 	public String getByName(@RequestParam("nome") String name, ModelMap model) {
 		model.addAttribute("funcionarios", employeeService.findByName(name));
-		return "/funcionario/lista";
+		return "funcionario/lista";
 	}
 	
 	@GetMapping("/buscar/cargo")
 	public String getByRole(@RequestParam("id") Long id, ModelMap model) {
 		model.addAttribute("funcionarios", employeeService.findByRole(id));
-		return "/funcionario/lista";
+		return "funcionario/lista";
 	}
 	
 	@GetMapping("/buscar/data")
@@ -107,7 +107,7 @@ public class EmployeeController {
 			@RequestParam("saida") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate out, 
 			ModelMap model) {
 		model.addAttribute("funcionarios", employeeService.findByDate(in, out));
-		return "/funcionario/lista";
+		return "funcionario/lista";
 	}
 	
 	@ModelAttribute("cargos")

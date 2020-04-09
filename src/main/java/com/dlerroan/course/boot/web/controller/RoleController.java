@@ -32,20 +32,20 @@ public class RoleController {
 	
 	@GetMapping("/cadastrar")
 	public String insert(Role role) {
-		return "/cargo/cadastro";
+		return "cargo/cadastro";
 	}
 	
 	@GetMapping("/listar")
 	public String findAll(ModelMap model) {
 		model.addAttribute("cargos", roleService.findAll());
-		return "/cargo/lista";
+		return "cargo/lista";
 	}
 	
 	@PostMapping("/salvar")
 	public String save(@Valid Role role, BindingResult result, RedirectAttributes attr) {
 		
 		if(result.hasErrors()) {
-			return "/cargo/cadastro";
+			return "cargo/cadastro";
 		}
 		
 		roleService.save(role);

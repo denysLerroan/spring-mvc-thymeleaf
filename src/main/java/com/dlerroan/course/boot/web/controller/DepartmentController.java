@@ -24,26 +24,26 @@ public class DepartmentController {
 
 	@GetMapping("/cadastrar")
 	public String insert(Department department) {
-		return "/departamento/cadastro";
+		return "departamento/cadastro";
 	}
 	
 	@GetMapping("/listar")
 	public String findAll(ModelMap model) {
 		model.addAttribute("departamentos", service.findAll());
-		return "/departamento/lista";
+		return "departamento/lista";
 	}
 	
 	@GetMapping("/editar/{id}")
 	public String preUpdate(@PathVariable("id") Long id, ModelMap model) {
 		model.addAttribute("department", service.findById(id));
-		return "/departamento/cadastro";
+		return "departamento/cadastro";
 	}
 	
 	@PostMapping("/salvar")
 	public String save(@Valid Department department, BindingResult result, RedirectAttributes attr) {
 		
 		if(result.hasErrors()) {
-			return "/departamento/cadastro";
+			return "departamento/cadastro";
 		}
 		
 		service.save(department);
@@ -55,7 +55,7 @@ public class DepartmentController {
 	public String update(@Valid Department department, BindingResult result, RedirectAttributes attr) {
 		
 		if(result.hasErrors()) {
-			return "/departamento/cadastro";
+			return "departamento/cadastro";
 		}
 		
 		service.update(department);
