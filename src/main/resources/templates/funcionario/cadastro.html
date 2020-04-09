@@ -32,7 +32,7 @@
 	                        <label for="nome">Nome do Funcionário</label>
 	                        <input type="text" class="form-control" id="nome" placeholder="Nome Completo"
 	                               autofocus="autofocus" th:field="*{name}"
-	                               th:classappend="${#fields.hasErrors('name') } ? 'is-invalid' : 'is-valid'"/>
+	                               th:classappend="${#fields.hasErrors('name') } ? 'is-invalid'"/>
 	                        <div class="invalid-feedback">
 	                        	<span th:errors="*{name}"></span>
 	
